@@ -1,0 +1,16 @@
+= form_for @giveaway do |f|
+  - if @giveaway.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@giveaway.errors.count, "error")} prohibited this giveaway from being saved:"
+      %ul
+        - @giveaway.errors.full_messages.each do |message|
+          %li= message
+
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :event_id
+    = f.number_field :event_id
+  .actions
+    = f.submit 'Save'

@@ -1,0 +1,23 @@
+%h1 Listing giveaways
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th Event
+      %th
+      %th
+      %th
+
+  %tbody
+    - @giveaways.each do |giveaway|
+      %tr
+        %td= giveaway.name
+        %td= giveaway.event_id
+        %td= link_to 'Show', giveaway
+        %td= link_to 'Edit', edit_giveaway_path(giveaway)
+        %td= link_to 'Destroy', giveaway, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Giveaway', new_giveaway_path

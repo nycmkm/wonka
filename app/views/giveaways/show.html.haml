@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @giveaway.name
+%p
+  %b Event:
+  = @giveaway.event_id
+
+= link_to 'Edit', edit_giveaway_path(@giveaway)
+\|
+= link_to 'Back', giveaways_path
