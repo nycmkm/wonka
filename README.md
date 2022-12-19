@@ -1,24 +1,12 @@
-# README
+# wonka
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Run giveaways from the set of attendees checked in for an Eventbrite event
 
-Things you may want to cover:
+## Local Setup
 
-* Ruby version
+1. TK environment variables
+1. `make dev`
 
-* System dependencies
+## Running tests
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+`make test`
