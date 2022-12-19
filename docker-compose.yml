@@ -1,0 +1,29 @@
+version: '3'
+volumes:
+  postgres:
+  node_modules:
+services:
+  db:
+    image: postgres:13.3
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=databas3 # only for local
+    healthcheck:
+      test: "pg_isready -h localhost -p 5432 -q -U postgres"
+      interval: 3s
+      timeout: 5s
+      retries: 5
+  web:
+    build: .
+    command: rails server --port=5000 --binding=0.0.0.0
+    ports:
+      - "5000:5000"
+    depends_on:
+      - db
+    env_file: .env
+    volumes:
+      - .:/app
+      - node_modules:/app/node_modules
