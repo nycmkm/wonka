@@ -1,3 +1,5 @@
+GIT_VERSION := $(shell git rev-parse HEAD)
+
 build:
 	docker-compose build
 
@@ -5,7 +7,7 @@ console: build
 	docker-compose run web /bin/bash
 
 deploy:
-	fly deploy --build-arg GIT_COMMIT=$(git rev-parse HEAD)
+	fly deploy --build-arg GIT_VERSION="$(GIT_VERSION)"
 
 dev: build
 	docker-compose run web rake db:create db:migrate

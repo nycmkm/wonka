@@ -1,5 +1,5 @@
-Rails.configuration.git_revision = if ENV["GIT_COMMIT"]
-                                     ENV["GIT_COMMIT"]
+Rails.configuration.git_revision = if ENV["GIT_VERSION"]
+                                     ENV["GIT_VERSION"]
                                    else
                                      `git rev-parse HEAD`.strip
                                    end
