@@ -4,6 +4,9 @@ build:
 console: build
 	docker-compose run web /bin/bash
 
+deploy:
+	fly deploy --build-arg GIT_COMMIT=$(git rev-parse HEAD)
+
 dev: build
 	docker-compose run web rake db:create db:migrate
 	docker-compose up

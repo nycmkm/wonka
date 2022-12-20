@@ -112,6 +112,9 @@ COPY --from=node_modules /app/node_modules /app/node_modules
 # Deploy your application
 COPY . .
 
+ARG GIT_VERSION
+ENV GIT_VERSION=$GIT_VERSION
+
 # Adjust binstubs to run on Linux and set current working directory
 RUN chmod +x /app/bin/* && \
     sed -i 's/ruby.exe\r*/ruby/' /app/bin/* && \
