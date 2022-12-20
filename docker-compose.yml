@@ -17,7 +17,9 @@ services:
       timeout: 5s
       retries: 5
   web:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
     command: rails server --port=5000 --binding=0.0.0.0
     ports:
       - "5000:5000"
