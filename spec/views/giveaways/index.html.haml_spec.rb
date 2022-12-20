@@ -4,16 +4,13 @@ RSpec.describe "giveaways/index", type: :view do
   before(:each) do
     user = create(:user)
     sign_in user
-    assign(:giveaways, [
-      Giveaway.create!(
-        name: "Name",
-        event_id: 2
-      ),
-      Giveaway.create!(
-        name: "Name",
-        event_id: 2
-      )
-    ])
+    assign(
+      :giveaways,
+      [
+        create(:giveaway, user: user, name: "Name"),
+        create(:giveaway, user: user, name: "Name"),
+      ]
+    )
   end
 
   it "renders a list of giveaways" do
