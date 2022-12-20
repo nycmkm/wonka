@@ -2,10 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "giveaways/show", type: :view do
   before(:each) do
-    assign(:giveaway, Giveaway.create!(
-      name: "Name",
-      event_id: 2
-    ))
+    assign(:giveaway, create(:giveaway))
   end
 
   it "renders attributes in <p>" do
