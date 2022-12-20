@@ -1,6 +1,9 @@
 build:
 	docker-compose build
 
+console: build
+	docker-compose run web /bin/bash
+
 dev: build
 	docker-compose run web rake db:create db:migrate
 	docker-compose up

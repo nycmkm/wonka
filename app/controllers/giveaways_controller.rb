@@ -65,6 +65,6 @@ class GiveawaysController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def giveaway_params
-      params.require(:giveaway).permit(:name, :event_id)
+      params.require(:giveaway).permit(:name, :event_id).merge(user_id: current_user.id)
     end
 end
