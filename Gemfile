@@ -50,6 +50,7 @@ gem "haml-rails"
 # gem "image_processing", "~> 1.2"
 
 gem "devise"
+gem "httparty"
 
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
@@ -69,6 +70,7 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem "webdrivers"
+  gem "webmock"
 end
 
 group :development, :test do
