@@ -38,3 +38,6 @@ jobs:
         run: bin/rake assets:precompile
       - name: Run tests
         run: bin/rspec
+        env:
+          EVENTBRITE_API_KEY: "fake"
+          EVENTBRITE_ORGANIZATION_ID: "fake"
