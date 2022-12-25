@@ -17,12 +17,24 @@ services:
       timeout: 5s
       retries: 5
   web:
+    image: wonka-web
     build:
       context: .
       dockerfile: Dockerfile.dev
     command: rails server --port=5000 --binding=0.0.0.0
     ports:
       - "5000:5000"
+    depends_on:
+      - db
+    env_file: .env
+    volumes:
+      - .:/app
+      - node_modules:/app/node_modules
+  assets:
+    image: wonka-web
+    depends_on:
+      - web
+    command: yarn watch:all
     depends_on:
       - db
     env_file: .env
