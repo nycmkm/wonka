@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_20_151626) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_26_232835) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "giveaways", force: :cascade do |t|
     t.string "name"
-    t.integer "event_id"
+    t.bigint "event_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
@@ -35,5 +35,17 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_20_151626) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "winners", force: :cascade do |t|
+    t.string "name"
+    t.bigint "attendee_id"
+    t.string "email"
+    t.bigint "giveaway_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "event_id"
+    t.index ["giveaway_id"], name: "index_winners_on_giveaway_id"
+  end
+
   add_foreign_key "giveaways", "users"
+  add_foreign_key "winners", "giveaways"
 end

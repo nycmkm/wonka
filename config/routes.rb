@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
-  resources :giveaways
+  resources :giveaways do
+    member do
+      post :pick_winners
+    end
+  end
+
   devise_for :users
 
   get "/health", to: "health#show"

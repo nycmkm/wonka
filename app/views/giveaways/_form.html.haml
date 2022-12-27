@@ -11,6 +11,6 @@
     = f.text_field :name
   .field
     = f.label :event_id
-    = f.number_field :event_id
+    = f.select :event_id, options_for_select(@events.map { |e| [e.name, e.id] })
   .actions
     = f.submit 'Save'

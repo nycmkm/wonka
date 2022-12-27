@@ -1,5 +1,5 @@
 class GiveawaysController < ApplicationController
-  before_action :set_giveaway, only: %i[ show edit update destroy ]
+  before_action :set_giveaway, only: %i[ show edit pick_winners update destroy ]
 
   # GET /giveaways or /giveaways.json
   def index
@@ -8,10 +8,21 @@ class GiveawaysController < ApplicationController
 
   # GET /giveaways/1 or /giveaways/1.json
   def show
+    #@attendees = Eventbrite.new.attendees(@giveaway.event_id)
+  end
+
+  def pick_winners
+    GiveawayRoller.new(
+      @giveaway,
+      winner_params[:spots].to_i,
+      winner_params[:rerolls].compact_blank
+    ).roll
+    redirect_to giveaway_url(@giveaway), notice: "Winners have been picked!"
   end
 
   # GET /giveaways/new
   def new
+    @events = Eventbrite.new.events
     @giveaway = Giveaway.new
   end
 
@@ -66,5 +77,9 @@ class GiveawaysController < ApplicationController
     # Only allow a list of trusted parameters through.
     def giveaway_params
       params.require(:giveaway).permit(:name, :event_id).merge(user_id: current_user.id)
+    end
+
+    def winner_params
+      params.require(:winners).permit(:spots, rerolls: [])
     end
 end

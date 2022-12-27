@@ -1,4 +1,11 @@
 FactoryBot.define do
+  factory :winner do
+    name { "MyString" }
+    attendee_id { "" }
+    email { "MyString" }
+    giveaway { nil }
+  end
+
   factory :user do
     email { "zaphod@beeblebr.ox" }
     password { "hhgtg4242" }

@@ -8,12 +8,12 @@ class Eventbrite
 
   def events
     path = "/organizations/#{organization_id}/events"
-    all_pages(path, "events")
+    all_pages(path, "events").map { |e| EventbriteEvent.new(e) }
   end
 
   def attendees(event_id)
     path = "/events/#{event_id}/attendees"
-    all_pages(path, "attendees").filter { |a| a["checked_in"] }
+    all_pages(path, "attendees").filter { |a| a["checked_in"] }.map { |a| EventbriteAttendee.new(a) }
   end
 
   private
