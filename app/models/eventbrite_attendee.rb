@@ -1,9 +1,9 @@
 class EventbriteAttendee
   def initialize(attrs)
-    @id = attrs["id"]
-    @checked_in = attrs["checked_in"]
-    @email = attrs["profile"]["email"]
-    @name = attrs["profile"]["name"]
+    @id = attrs[:id]
+    @checked_in = attrs[:checked_in]
+    @email = attrs[:profile][:email]
+    @name = attrs[:profile][:name]
   end
 
   def checked_in?

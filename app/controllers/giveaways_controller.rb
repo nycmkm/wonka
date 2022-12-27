@@ -15,7 +15,7 @@ class GiveawaysController < ApplicationController
     GiveawayRoller.new(
       @giveaway,
       winner_params[:spots].to_i,
-      winner_params[:rerolls].compact_blank
+      winner_params[:rerolls]&.compact_blank
     ).roll
     redirect_to giveaway_url(@giveaway), notice: "Winners have been picked!"
   end
