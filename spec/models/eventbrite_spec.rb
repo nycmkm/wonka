@@ -4,7 +4,7 @@ RSpec.describe Eventbrite, type: :model do
   describe "#events" do
     it "returns events for the organization" do
       stub_request(:get, /eventbriteapi.com\/v3\/organizations/).
-        to_return(status: 200, body: '{"pagination": {"has_more_items": false}, "events": [{"id": 1234, "name": "test1"}, {"id": 2345, "name": "test2"}]}', headers: {"Content-Type" => "application/json"})
+        to_return(status: 200, body: '{"pagination": {"has_more_items": false}, "events": [{"id": 1234, "name": {"text": "test1"}}, {"id": 2345, "name": {"text": "test2"}}]}', headers: {"Content-Type" => "application/json"})
 
       events = Eventbrite.new.events
 
@@ -21,7 +21,7 @@ RSpec.describe Eventbrite, type: :model do
           headers: {"Content-Type" => "application/json"},
           body: '{"pagination": {"has_more_items": false}, "attendees": [{"profile": {"name": "Zaphod"}, "checked_in": true}]}',
         )
-      stub_request(:get, /eventbriteapi.com\/v3\/events\/42\/attendees\?continuation=$/).
+      stub_request(:get, /eventbriteapi.com\/v3\/events\/42\/attendees\?continuation$/).
         to_return(
           status: 200,
           headers: {"Content-Type" => "application/json"},

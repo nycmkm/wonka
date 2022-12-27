@@ -4,6 +4,7 @@ RSpec.describe "giveaways/edit", type: :view do
   before(:each) do
     @giveaway = create(:giveaway)
     assign(:giveaway, @giveaway)
+    assign(:events, [])
   end
 
   it "renders the edit giveaway form" do
@@ -12,8 +13,6 @@ RSpec.describe "giveaways/edit", type: :view do
     assert_select "form[action=?][method=?]", giveaway_path(@giveaway), "post" do
 
       assert_select "input[name=?]", "giveaway[name]"
-
-      assert_select "input[name=?]", "giveaway[event_id]"
     end
   end
 end

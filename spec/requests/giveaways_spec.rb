@@ -47,6 +47,7 @@ RSpec.describe "/giveaways", type: :request do
 
   describe "GET /new" do
     it "renders a successful response" do
+      expect_any_instance_of(Eventbrite).to(receive(:events)).and_return([])
       get new_giveaway_url
       expect(response).to be_successful
     end
