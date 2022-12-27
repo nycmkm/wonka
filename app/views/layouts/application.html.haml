@@ -9,5 +9,20 @@
     = stylesheet_link_tag "application", "data-turbo-track": "reload"
     = javascript_include_tag "application", "data-turbo-track": "reload", defer: true
   %body
-    .container
+    %nav.navbar.navbar-expand-lg.navbar-light.p-3.site-nav
+      %strong
+        %a.navbar-brand{ href: root_path } Wonka
+      %button.navbar-toggler{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarSupportedContent", "data-toggle" => "collapse", type: "button"}
+        %span.navbar-toggler-icon
+      #navbarSupportedContent.collapse.navbar-collapse.justify-content-end
+        %ul.navbar-nav.mr-auto
+          %li.nav-item.active
+            %a.nav-link{href: giveaways_path } Giveaways
+          %li.nav-item
+            %a.nav-link{href: new_giveaway_path } New Giveaway
+    .container-fluid.p-5
+      - if notice
+        .alert.alert-info=notice
+      - if alert
+        .alert.alert-warning.alert
       = yield

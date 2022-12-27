@@ -1,2 +1,28 @@
+$font-size-base: 1.5rem;
+
+$beige: #F5F7DC;
+$green: #B5D99C;
+$yellow: #FFFF82;
+$dark: #0F0326;
+$red: #E65F5C;
+$brown: #99621E;
+
+$body-bg: $beige;
+$body-color: $dark;
+
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons';
+
+.site-nav {
+  background: $red;
+  a {
+    color: $yellow;
+  }
+}
+
+a {
+  color: $brown;
+  &:hover {
+    color: $green;
+  }
+}

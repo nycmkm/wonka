@@ -1,22 +1,18 @@
-%p#notice= notice
+.row
+  %p
+    %b Name:
+    = @giveaway.name
+  %p
+    %b Event:
+    = @giveaway.event_id
 
-%p
-  %b Name:
-  = @giveaway.name
-%p
-  %b Event:
-  = @giveaway.event_id
-
-%p
-  %b Pick winners:
-  = bootstrap_form_for "winners", url: pick_winners_giveaway_path(@giveaway) do |form|
-    = form.number_field :spots, label: "Number of winners", value: @giveaway.winners.count
-    - if @giveaway.winners.present?
-      = form.collection_check_boxes "rerolls", @giveaway.winners, :id, :name, label: "Winners", help: "Check box to re-roll"
-    = form.submit "Pick winners"
-
+  %p
+    %b Pick winners:
+    = bootstrap_form_for "winners", url: pick_winners_giveaway_path(@giveaway) do |form|
+      = form.number_field :spots, label: "Number of winners", value: @giveaway.winners.count
+      - if @giveaway.winners.present?
+        = form.collection_check_boxes "rerolls", @giveaway.winners, :id, :name, label: "Winners", help: "Check box to re-roll"
+      = form.submit "Pick winners"
   
-
-= link_to 'Edit', edit_giveaway_path(@giveaway)
-\|
-= link_to 'Back', giveaways_path
+.row
+  = link_to 'Edit', edit_giveaway_path(@giveaway)

@@ -1,6 +1,6 @@
 %h1 Listing giveaways
 
-%table
+%table.table
   %thead
     %tr
       %th Name
@@ -18,6 +18,5 @@
         %td= link_to 'Edit', edit_giveaway_path(giveaway)
         %td= link_to 'Destroy', giveaway, method: :delete, data: { confirm: 'Are you sure?' }
 
-%br
-
-= link_to 'New Giveaway', new_giveaway_path
+.row
+  = link_to 'New Giveaway', new_giveaway_path
