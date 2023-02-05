@@ -1,4 +1,17 @@
 FactoryBot.define do
+  factory :event do
+    eventbrite_id { "" }
+    name { "MyString" }
+    date { "2023-02-05 22:02:18" }
+  end
+
+  factory :attendee do
+    event { nil }
+    eventbrite_id { "" }
+    name { "MyString" }
+    email { "MyString" }
+  end
+
   factory :winner do
     name { "MyString" }
     attendee_id { "" }

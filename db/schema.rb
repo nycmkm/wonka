@@ -10,16 +10,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_26_232835) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_05_220449) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "giveaways", force: :cascade do |t|
+  create_table "attendees", force: :cascade do |t|
+    t.bigint "event_id", null: false
+    t.bigint "eventbrite_id"
     t.string "name"
+    t.string "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_attendees_on_event_id"
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.bigint "eventbrite_id"
+    t.string "name"
+    t.datetime "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "giveaways", force: :cascade do |t|
+    t.string "prize"
     t.bigint "event_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
+    t.integer "num_winners"
+    t.boolean "drawn"
     t.index ["user_id"], name: "index_giveaways_on_user_id"
   end
 
@@ -36,16 +56,17 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_26_232835) do
   end
 
   create_table "winners", force: :cascade do |t|
-    t.string "name"
-    t.bigint "attendee_id"
-    t.string "email"
     t.bigint "giveaway_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "event_id"
+    t.bigint "attendee_id", null: false
+    t.index ["attendee_id"], name: "index_winners_on_attendee_id"
     t.index ["giveaway_id"], name: "index_winners_on_giveaway_id"
   end
 
+  add_foreign_key "attendees", "events"
   add_foreign_key "giveaways", "users"
+  add_foreign_key "winners", "attendees"
   add_foreign_key "winners", "giveaways"
 end
