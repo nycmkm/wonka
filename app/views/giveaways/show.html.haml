@@ -1,7 +1,7 @@
 .row
   %p
-    %b Name:
-    = @giveaway.name
+    %b Prize
+    = @giveaway.prize
   %p
     %b Event:
     = @giveaway.event_id
@@ -9,7 +9,7 @@
   %p
     %b Pick winners:
     = bootstrap_form_for "winners", url: pick_winners_giveaway_path(@giveaway) do |form|
-      = form.number_field :spots, label: "Number of winners", value: @giveaway.winners.count
+      = form.number_field :spots, label: "Number of winners", value: @giveaway.num_winners
       - if @giveaway.winners.present?
         = form.collection_check_boxes "rerolls", @giveaway.winners, :id, :name, label: "Winners", help: "Check box to re-roll"
       %a.btn.btn-secondary{ role: "button", href: sync_attendees_giveaway_path(@giveaway) } Sync Attendees

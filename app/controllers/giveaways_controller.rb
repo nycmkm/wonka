@@ -1,5 +1,6 @@
 class GiveawaysController < ApplicationController
-  before_action :set_giveaway, only: %i[ show edit pick_winners update destroy ]
+  before_action :set_giveaway, only: %i[ show edit pick_winners sync_attendees update destroy ]
+  before_action :set_events, only: %i[ new create ]
 
   # GET /giveaways or /giveaways.json
   def index
@@ -28,7 +29,6 @@ class GiveawaysController < ApplicationController
 
   # GET /giveaways/new
   def new
-    @events = Eventbrite.new.events.sort_by(&:id).reverse
     @giveaway = Giveaway.new
   end
 
@@ -75,14 +75,17 @@ class GiveawaysController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+    def set_events
+      @events = Event.all.order(date: :desc)
+    end
+
     def set_giveaway
       @giveaway = Giveaway.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
     def giveaway_params
-      params.require(:giveaway).permit(:name, :event_id).merge(user_id: current_user.id)
+      params.require(:giveaway).permit(:prize, :event_id, :num_winners).merge(user_id: current_user.id)
     end
 
     def winner_params

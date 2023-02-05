@@ -6,6 +6,8 @@ Rails.application.routes.draw do
     end
   end
 
+  get "/events/sync", to: "events#sync"
+
   devise_for :users
 
   get "/health", to: "health#show"
