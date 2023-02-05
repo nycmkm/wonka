@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :giveaways do
     member do
       post :pick_winners
+      get :sync_attendees
     end
   end
 

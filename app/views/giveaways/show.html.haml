@@ -12,6 +12,7 @@
       = form.number_field :spots, label: "Number of winners", value: @giveaway.winners.count
       - if @giveaway.winners.present?
         = form.collection_check_boxes "rerolls", @giveaway.winners, :id, :name, label: "Winners", help: "Check box to re-roll"
+      %a.btn.btn-secondary{ role: "button", href: sync_attendees_giveaway_path(@giveaway) } Sync Attendees
       = form.submit "Pick winners"
   
 .row

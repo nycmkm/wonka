@@ -20,9 +20,15 @@ class GiveawaysController < ApplicationController
     redirect_to giveaway_url(@giveaway), notice: "Winners have been picked!"
   end
 
+  def sync_attendees
+    AttendeeSynchronizer.new(@giveaway.event).sync
+    redirect_to giveaway_url(@giveaway), notice: "Attendees synced"
+  end
+
+
   # GET /giveaways/new
   def new
-    @events = Eventbrite.new.events
+    @events = Eventbrite.new.events.sort_by(&:id).reverse
     @giveaway = Giveaway.new
   end
 
