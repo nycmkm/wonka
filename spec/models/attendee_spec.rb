@@ -2,14 +2,14 @@ require 'rails_helper'
 
 RSpec.describe Attendee, type: :model do
   describe "validations" do
-    let(:valid_attributes) {
+    let(:valid_attributes) do
       {
         event_id: 2,
         eventbrite_id: 424242,
         name: "Herbie Hancock",
         email: "herbie@example.com",
       }
-    }
+    end
 
     it "validates presence of event_id" do
       attendee = Attendee.new(valid_attributes.except(:event_id))

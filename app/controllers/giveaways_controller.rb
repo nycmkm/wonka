@@ -4,7 +4,7 @@ class GiveawaysController < ApplicationController
 
   # GET /giveaways or /giveaways.json
   def index
-    @giveaways = Giveaway.all
+    @giveaways = Giveaway.all.group_by { |g| g.event.name }
   end
 
   # GET /giveaways/1 or /giveaways/1.json
