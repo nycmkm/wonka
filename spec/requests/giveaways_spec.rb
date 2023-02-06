@@ -14,19 +14,24 @@ require 'rails_helper'
 
 RSpec.describe "/giveaways", type: :request do
   before do
-    user = create(:user)
-    sign_in user
+    @user = create(:user)
+    sign_in @user
   end
 
   # This should return the minimal set of attributes required to create a valid
   # Giveaway. As you add validations to Giveaway, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    {
+      event_id: create(:event).id,
+      prize: "Unikorn Commission",
+      num_winners: 4,
+      user_id: @user.id,
+    }
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    { prize: "" } # Missing everything
   }
 
   describe "GET /index" do
@@ -47,7 +52,6 @@ RSpec.describe "/giveaways", type: :request do
 
   describe "GET /new" do
     it "renders a successful response" do
-      expect_any_instance_of(Eventbrite).to(receive(:events)).and_return([])
       get new_giveaway_url
       expect(response).to be_successful
     end
@@ -93,15 +97,19 @@ RSpec.describe "/giveaways", type: :request do
 
   describe "PATCH /update" do
     context "with valid parameters" do
+      before do
+        @new_num_winners = 41
+      end
+
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        { num_winners: @new_num_winners }
       }
 
       it "updates the requested giveaway" do
         giveaway = Giveaway.create! valid_attributes
         patch giveaway_url(giveaway), params: { giveaway: new_attributes }
         giveaway.reload
-        skip("Add assertions for updated state")
+        expect(giveaway.num_winners).to eq(@new_num_winners)
       end
 
       it "redirects to the giveaway" do

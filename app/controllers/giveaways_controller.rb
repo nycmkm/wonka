@@ -1,6 +1,6 @@
 class GiveawaysController < ApplicationController
   before_action :set_giveaway, only: %i[ show edit pick_winners sync_attendees update destroy ]
-  before_action :set_events, only: %i[ new create ]
+  before_action :set_events, only: %i[ new create edit update ]
 
   # GET /giveaways or /giveaways.json
   def index

@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :event do
-    eventbrite_id { "" }
-    name { "MyString" }
+    eventbrite_id { 3783163 }
+    name { "Mars Mechanical Keyboard Meetup v.001" }
     date { "2023-02-05 22:02:18" }
   end
 

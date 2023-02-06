@@ -5,6 +5,8 @@
     %tr
       %th Name
       %th Event
+      %th Winners
+      %th Drawn
       %th
       %th
       %th
@@ -12,8 +14,10 @@
   %tbody
     - @giveaways.each do |giveaway|
       %tr
-        %td= giveaway.name
+        %td= giveaway.prize
         %td= giveaway.event_id
+        %td= giveaway.num_winners
+        %td= giveaway.drawn?
         %td= link_to 'Show', giveaway
         %td= link_to 'Edit', edit_giveaway_path(giveaway)
         %td= link_to 'Destroy', giveaway, method: :delete, data: { confirm: 'Are you sure?' }
