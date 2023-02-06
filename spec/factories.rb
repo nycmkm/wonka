@@ -6,8 +6,8 @@ FactoryBot.define do
   end
 
   factory :attendee do
-    event { nil }
-    eventbrite_id { "" }
+    event { create(:event) }
+    eventbrite_id { rand(100_000) }
     name { "MyString" }
     email { "MyString" }
   end

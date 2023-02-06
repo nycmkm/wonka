@@ -1,6 +1,7 @@
 class Winner < ApplicationRecord
   belongs_to :giveaway
-  validates_presence_of :name, :email, :attendee_id, :event_id, :giveaway
+  belongs_to :attendee
+  #validates_presence_of :name, :email, :attendee_id, :event_id, :giveaway
 
   after_initialize :set_event_id
 
