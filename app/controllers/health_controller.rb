@@ -3,7 +3,7 @@ class HealthController < ApplicationController
 
   def show
     render json: {
-      version: Rails.configuration.git_revision
+      version: Rails.configuration.git_revision,
     }
   end
 end

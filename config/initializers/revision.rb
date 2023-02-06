@@ -1,7 +1,3 @@
-Rails.configuration.git_revision = if ENV["GIT_VERSION"]
-                                     ENV["GIT_VERSION"]
-                                   else
-                                     `git rev-parse HEAD`.strip
-                                   end
+Rails.configuration.git_revision = (ENV["GIT_VERSION"] || `git rev-parse HEAD`.strip)
 
 Rails.logger.info "Wonka running with revision #{Rails.configuration.git_revision}"

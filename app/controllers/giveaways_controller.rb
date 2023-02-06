@@ -1,6 +1,6 @@
 class GiveawaysController < ApplicationController
-  before_action :set_giveaway, only: %i[ show edit pick_winners sync_attendees update destroy ]
-  before_action :set_events, only: %i[ new create edit update ]
+  before_action :set_giveaway, only: %i[show edit pick_winners sync_attendees update destroy]
+  before_action :set_events, only: %i[new create edit update]
 
   # GET /giveaways or /giveaways.json
   def index
@@ -9,14 +9,14 @@ class GiveawaysController < ApplicationController
 
   # GET /giveaways/1 or /giveaways/1.json
   def show
-    #@attendees = Eventbrite.new.attendees(@giveaway.event_id)
+    # @attendees = Eventbrite.new.attendees(@giveaway.event_id)
   end
 
   def pick_winners
     GiveawayRoller.new(
       @giveaway,
       winner_params[:spots].to_i,
-      winner_params[:rerolls]&.compact_blank
+      winner_params[:rerolls]&.compact_blank,
     ).roll
     redirect_to giveaway_url(@giveaway), notice: "Winners have been picked!"
   end
@@ -26,15 +26,13 @@ class GiveawaysController < ApplicationController
     redirect_to giveaway_url(@giveaway), notice: "Attendees synced"
   end
 
-
   # GET /giveaways/new
   def new
     @giveaway = Giveaway.new
   end
 
   # GET /giveaways/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /giveaways or /giveaways.json
   def create
@@ -75,20 +73,21 @@ class GiveawaysController < ApplicationController
   end
 
   private
-    def set_events
-      @events = Event.all.order(date: :desc)
-    end
 
-    def set_giveaway
-      @giveaway = Giveaway.find(params[:id])
-    end
+  def set_events
+    @events = Event.all.order(date: :desc)
+  end
 
-    # Only allow a list of trusted parameters through.
-    def giveaway_params
-      params.require(:giveaway).permit(:prize, :event_id, :num_winners).merge(user_id: current_user.id)
-    end
+  def set_giveaway
+    @giveaway = Giveaway.find(params[:id])
+  end
 
-    def winner_params
-      params.require(:winners).permit(:spots, rerolls: [])
-    end
+  # Only allow a list of trusted parameters through.
+  def giveaway_params
+    params.require(:giveaway).permit(:prize, :event_id, :num_winners).merge(user_id: current_user.id)
+  end
+
+  def winner_params
+    params.require(:winners).permit(:spots, rerolls: [])
+  end
 end

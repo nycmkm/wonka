@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe GiveawaysController, type: :routing do
+RSpec.describe GiveawaysController do
   describe "routing" do
     it "routes to #index" do
       expect(get: "/giveaways").to route_to("giveaways#index")
@@ -17,7 +17,6 @@ RSpec.describe GiveawaysController, type: :routing do
     it "routes to #edit" do
       expect(get: "/giveaways/1/edit").to route_to("giveaways#edit", id: "1")
     end
-
 
     it "routes to #create" do
       expect(post: "/giveaways").to route_to("giveaways#create")

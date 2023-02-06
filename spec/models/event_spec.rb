@@ -1,12 +1,12 @@
-require 'rails_helper'
+require "rails_helper"
 
-RSpec.describe Event, type: :model do
+RSpec.describe Event do
   describe "validations" do
     let(:valid_attributes) do
       {
         name: "Pluto Keyboard Meetup 2056",
         date: Time.parse("January 1, 2056 3:00pm"),
-        eventbrite_id: rand(100_000)
+        eventbrite_id: rand(100_000),
       }
     end
 
@@ -37,6 +37,5 @@ RSpec.describe Event, type: :model do
       expect(event).to be_invalid
       expect(event.errors).to include(:eventbrite_id)
     end
-
   end
 end

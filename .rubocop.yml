@@ -1,0 +1,139 @@
+AllCops:
+  TargetRubyVersion: 3.1
+  NewCops: enable
+
+require:
+  - rubocop-performance
+  - rubocop-rails
+  - rubocop-rspec
+
+Layout/LineLength:
+  Enabled: false
+
+Metrics/AbcSize:
+  Enabled: false
+
+# We don't (currently) document our code
+Style/Documentation:
+  Enabled: false
+
+# Always use double-quotes to keep things simple
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+Style/StringLiteralsInInterpolation:
+  EnforcedStyle: double_quotes
+
+# Use a trailing comma to keep diffs clean when elements are inserted or removed
+Style/TrailingCommaInArguments:
+  EnforcedStyleForMultiline: comma
+
+Style/TrailingCommaInHashLiteral:
+  EnforcedStyleForMultiline: comma
+
+Style/TrailingCommaInArrayLiteral:
+  EnforcedStyleForMultiline: comma
+
+# We avoid GuardClause because it can result in "suprise return"
+Style/GuardClause:
+  Enabled: false
+
+# We avoid IfUnlessModifier because it can result in "suprise if"
+Style/IfUnlessModifier:
+  Enabled: false
+
+# We don't care about the fail/raise distinction
+Style/SignalException:
+  EnforcedStyle: only_raise
+
+Layout/DotPosition:
+  EnforcedStyle: trailing
+
+# Common globals we allow
+Style/GlobalVars:
+  AllowedVariables:
+  - "$statsd"
+  - "$mongo"
+  - "$rollout"
+
+# Using english names requires loading an extra module, which is annoying, so
+# we prefer the perl names for consistency.
+Style/SpecialGlobalVars:
+  EnforcedStyle: use_perl_names
+
+# We use %w[ ], not %w( ) because the former looks like an array
+Style/PercentLiteralDelimiters:
+  PreferredDelimiters:
+    "%w": []
+    "%W": []
+
+# Allow "trivial" accessors when defined as a predicate? method
+Style/TrivialAccessors:
+  AllowPredicates: true
+
+Style/Next:
+  Enabled: false
+
+# We think it's OK to use the "extend self" module pattern
+Style/ModuleFunction:
+  Enabled: false
+
+# Disallow extra spacing for token alignment
+Layout/ExtraSpacing:
+  AllowForAlignment: false
+
+Style/RegexpLiteral:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Rails/Delegate:
+  Enabled: true
+
+Rails/TimeZone:
+  Enabled: true
+
+Metrics/ClassLength:
+  Enabled: false
+
+Metrics/ModuleLength:
+  Enabled: false
+
+Metrics/MethodLength:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Exclude:
+  - spec/**/*
+
+Style/BlockDelimiters:
+  Exclude:
+  - spec/**/*
+
+RSpec/DescribedClass:
+  Enabled: false
+
+RSpec/ExampleLength:
+  Enabled: false
+
+RSpec/InstanceVariable:
+  Enabled: false
+
+Rails/I18nLocaleTexts:
+  Enabled: false
+
+RSpec/MultipleExpectations:
+  Enabled: false
+
+Rails/HasManyOrHasOneDependent:
+  Enabled: false
+
+Rails/NotNullColumn:
+  Enabled: false
+
+Rails/ReversibleMigration:
+  Enabled: false
+
+Rails/BulkChangeTable:
+  Enabled: false

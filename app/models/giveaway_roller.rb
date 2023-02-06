@@ -20,7 +20,7 @@ class GiveawayRoller
   end
 
   def pick_winners
-    winners = attendees.shuffle.first(spots_to_pick)
+    winners = attendees.sample(spots_to_pick)
     winners.each do |winner|
       giveaway.winners.create!(
         attendee_id: winner.id,
@@ -32,7 +32,7 @@ class GiveawayRoller
   end
 
   def spots_to_pick
-    # TODO raise error if this is negative
+    # TODO: raise error if this is negative
     spots - giveaway.winners.count
   end
 
