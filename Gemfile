@@ -45,12 +45,14 @@ gem "bootsnap", require: false
 # Use Sass to process CSS
 gem "sassc-rails"
 gem "haml-rails"
+gem "bootstrap_form", "~> 5.1"
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
 gem "devise"
-gem "httparty"
+gem "http"
+gem "fast_jsonparser"
 
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
@@ -79,6 +81,7 @@ group :development, :test do
   gem "rspec-rails"
   gem "factory_bot_rails"
   gem "faker"
+  gem "pry"
 end
 
 gem "cssbundling-rails", "~> 1.1"

@@ -1,4 +1,4 @@
-= form_for @giveaway do |f|
+= bootstrap_form_for @giveaway do |f|
   - if @giveaway.errors.any?
     #error_explanation
       %h2= "#{pluralize(@giveaway.errors.count, "error")} prohibited this giveaway from being saved:"
@@ -7,10 +7,13 @@
           %li= message
 
   .field
-    = f.label :name
-    = f.text_field :name
+    = f.select :event_id, options_for_select(@events.map { |e| [e.name, e.id] })
+  .mb-3
+    %small
+      %a{ href: sync_events_path } Sync events
   .field
-    = f.label :event_id
-    = f.number_field :event_id
-  .actions
+    = f.text_field :prize
+  .field
+    = f.number_field :num_winners, label: "Winners"
+  .actions.mb-3.mt-3
     = f.submit 'Save'
