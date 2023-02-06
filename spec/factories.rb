@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :event do
-    eventbrite_id { 3783163 }
+    eventbrite_id { rand(100_000) }
     name { "Mars Mechanical Keyboard Meetup v.001" }
     date { "2023-02-05 22:02:18" }
   end
@@ -25,8 +25,9 @@ FactoryBot.define do
   end
 
   factory :giveaway do
-    name { "Spaceship" }
-    event_id { 42 }
+    prize { "Spaceship" }
+    event { create(:event) }
+    num_winners { 3 }
     user { create(:user) }
   end
 end
