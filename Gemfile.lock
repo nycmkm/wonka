@@ -76,6 +76,7 @@ GEM
     bootstrap_form (5.1.0)
       actionpack (>= 5.2)
       activemodel (>= 5.2)
+    brakeman (5.4.0)
     builder (3.2.4)
     capybara (3.38.0)
       addressable
@@ -353,6 +354,7 @@ PLATFORMS
 DEPENDENCIES
   bootsnap
   bootstrap_form (~> 5.1)
+  brakeman
   capybara
   cssbundling-rails (~> 1.1)
   debug
