@@ -6,7 +6,11 @@ Rails.application.routes.draw do
     end
   end
 
-  get "/events/sync", to: "events#sync"
+  resources :events, only: [:index, :show] do
+    collection do
+      get :sync
+    end
+  end
 
   devise_for :users
 

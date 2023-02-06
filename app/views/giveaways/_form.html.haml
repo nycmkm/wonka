@@ -10,7 +10,7 @@
     = f.select :event_id, options_for_select(@events.map { |e| [e.name, e.id] })
   .mb-3
     %small
-      %a{ href: events_sync_path } Sync events
+      %a{ href: sync_events_path } Sync events
   .field
     = f.text_field :prize
   .field
