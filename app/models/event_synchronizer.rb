@@ -4,7 +4,7 @@ class EventSynchronizer
       event = Event.find_or_initialize_by(eventbrite_id: eb_event[:id])
 
       event.name = eb_event[:name][:text]
-      event.date = Time.parse(eb_event[:start][:utc])
+      event.date = Time.zone.parse(eb_event[:start][:utc])
       event.save!
     end
   end

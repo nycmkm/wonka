@@ -110,3 +110,6 @@ Style/ClassAndModuleChildren:
 Style/BlockDelimiters:
   Exclude:
   - spec/**/*
+
+RSpec/DescribedClass:
+  Enabled: false

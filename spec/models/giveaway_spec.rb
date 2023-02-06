@@ -1,6 +1,6 @@
-require 'rails_helper'
+require "rails_helper"
 
-RSpec.describe Giveaway, type: :model do
+RSpec.describe Giveaway do
   describe "validations" do
     let(:valid_attributes) do
       {

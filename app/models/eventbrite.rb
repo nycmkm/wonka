@@ -21,9 +21,9 @@ class Eventbrite
 
   def all_pages(path, key, continuation_token = nil)
     response = HTTP.
-      auth("Bearer #{ENV.fetch("EVENTBRITE_API_KEY")}").
-      follow.
-      get("#{BASE_URL}#{path}", params: { continuation: continuation_token })
+               auth("Bearer #{ENV.fetch("EVENTBRITE_API_KEY")}").
+               follow.
+               get("#{BASE_URL}#{path}", params: { continuation: continuation_token })
 
     if response.status != 200
       raise RequestError, "Error requesting #{path}: #{response.status}"

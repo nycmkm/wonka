@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :events, only: [:index, :show] do
+  resources :events, only: %i[index show] do
     collection do
       get :sync
     end

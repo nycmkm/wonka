@@ -1,11 +1,11 @@
-require 'rails_helper'
+require "rails_helper"
 
-RSpec.describe Attendee, type: :model do
+RSpec.describe Attendee do
   describe "validations" do
     let(:valid_attributes) do
       {
         event_id: 2,
-        eventbrite_id: 424242,
+        eventbrite_id: 424_242,
         name: "Herbie Hancock",
         email: "herbie@example.com",
       }
@@ -34,6 +34,5 @@ RSpec.describe Attendee, type: :model do
       expect(attendee).to be_invalid
       expect(attendee.errors).to include(:email)
     end
-
   end
 end
