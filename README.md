@@ -15,3 +15,9 @@ Run giveaways from the set of attendees checked in for an Eventbrite event
 ## Running tests
 
 `make test`
+
+## Running linters
+
+Rubocop and Brakeman are run automatically by GitHub Actions. If you want to run them locally, you can run
+
+`make lint`
