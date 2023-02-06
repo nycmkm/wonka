@@ -9,7 +9,7 @@ RSpec.describe Eventbrite, type: :model do
       events = Eventbrite.new.events
 
       expect(events.count).to eq(2)
-      expect(events.first.id).to eq(1234)
+      expect(events.first[:id]).to eq(1234)
     end
   end
 
@@ -29,9 +29,11 @@ RSpec.describe Eventbrite, type: :model do
         )
       attendees = Eventbrite.new.attendees(42)
 
-      expect(attendees.count).to eq(2)
-      expect(attendees[0].name).to eq("Arthur")
-      expect(attendees[1].name).to eq("Zaphod")
+      expect(attendees.count).to eq(3)
+
+      expect(attendees[0][:profile][:name]).to eq("Trillian")
+      expect(attendees[1][:profile][:name]).to eq("Arthur")
+      expect(attendees[2][:profile][:name]).to eq("Zaphod")
     end
   end
 end
