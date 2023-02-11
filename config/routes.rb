@@ -16,6 +16,5 @@ Rails.application.routes.draw do
 
   get "/health", to: "health#show"
 
-  # Defines the root path route ("/")
   root "giveaways#new"
 end

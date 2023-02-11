@@ -2,12 +2,10 @@ class GiveawaysController < ApplicationController
   before_action :set_giveaway, only: %i[show edit pick_winners sync_attendees update destroy]
   before_action :set_events, only: %i[new create edit update]
 
-  # GET /giveaways or /giveaways.json
   def index
     @giveaways = Giveaway.all.group_by { |g| g.event.name }
   end
 
-  # GET /giveaways/1 or /giveaways/1.json
   def show
     # @attendees = Eventbrite.new.attendees(@giveaway.event_id)
   end
@@ -26,15 +24,12 @@ class GiveawaysController < ApplicationController
     redirect_to giveaway_url(@giveaway), notice: "Attendees synced"
   end
 
-  # GET /giveaways/new
   def new
     @giveaway = Giveaway.new
   end
 
-  # GET /giveaways/1/edit
   def edit; end
 
-  # POST /giveaways or /giveaways.json
   def create
     @giveaway = Giveaway.new(giveaway_params)
 
@@ -49,7 +44,6 @@ class GiveawaysController < ApplicationController
     end
   end
 
-  # PATCH/PUT /giveaways/1 or /giveaways/1.json
   def update
     respond_to do |format|
       if @giveaway.update(giveaway_params)
@@ -62,7 +56,6 @@ class GiveawaysController < ApplicationController
     end
   end
 
-  # DELETE /giveaways/1 or /giveaways/1.json
   def destroy
     @giveaway.destroy
 
