@@ -4,25 +4,24 @@
   .row.mb-5.mt-5
     %h3 #{event}
 
-    %table.table
-      %thead
-        %tr
-          %th Name
-          %th Winners
-          %th Drawn
-          %th
-          %th
-          %th
-
-      %tbody
-        - giveaways.each do |giveaway|
+    .table-responsive
+      %table.table
+        %thead
           %tr
-            %td= giveaway.prize
-            %td= giveaway.num_winners
-            %td= yesno(giveaway.drawn?)
-            %td= link_to 'Show', giveaway
-            %td= link_to 'Edit', edit_giveaway_path(giveaway)
-            %td= link_to 'Destroy', giveaway, method: :delete, data: { confirm: 'Are you sure?' }
+            %th Name
+            %th Winners
+            %th Drawn
+            %th
+            %th
+
+        %tbody
+          - giveaways.each do |giveaway|
+            %tr
+              %td= link_to giveaway.prize, giveaway
+              %td= giveaway.num_winners
+              %td= yesno(giveaway.drawn?)
+              %td= link_to 'Edit', edit_giveaway_path(giveaway)
+              %td= link_to 'Destroy', giveaway, method: :delete, data: { confirm: 'Are you sure?' }
 
 .row
   = link_to 'New Giveaway', new_giveaway_path

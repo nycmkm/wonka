@@ -3,4 +3,5 @@ class Event < ApplicationRecord
   validates :eventbrite_id, uniqueness: true
 
   has_many :attendees
+  has_many :winners
 end
