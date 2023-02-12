@@ -1,13 +1,21 @@
 class Winner < ApplicationRecord
   belongs_to :giveaway
   belongs_to :attendee
-  # validates_presence_of :name, :email, :attendee_id, :event_id, :giveaway
+  belongs_to :event
 
-  after_initialize :set_event_id
+  validate :same_event_id_as_giveaway_and_event
+
+  delegate :name, :email, to: :attendee, allow_nil: true
 
   private
 
-  def set_event_id
-    self.event_id = giveaway.event_id
+  def same_event_id_as_giveaway_and_event
+    if giveaway && event_id != giveaway.event_id
+      errors.add(:event_id, "must be the same as the giveaway's")
+    end
+
+    if attendee && event_id != attendee.event_id
+      errors.add(:event_id, "must be the same as the attendee's")
+    end
   end
 end
