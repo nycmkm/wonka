@@ -17,7 +17,7 @@ RSpec.describe Giveaway do
 
       expect(giveaway).not_to be_drawn
 
-      giveaway.winners.create!(attendee: create(:attendee))
+      giveaway.winners.create!(attendee: create(:attendee, event: giveaway.event), event: giveaway.event)
 
       expect(giveaway).to be_drawn
     end

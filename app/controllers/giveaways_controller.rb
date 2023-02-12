@@ -13,8 +13,7 @@ class GiveawaysController < ApplicationController
   def pick_winners
     GiveawayRoller.new(
       @giveaway,
-      winner_params[:spots].to_i,
-      winner_params[:rerolls]&.compact_blank,
+      rerolls_params[:rerolls]&.compact_blank,
     ).roll
     redirect_to giveaway_url(@giveaway), notice: "Winners have been picked!"
   end
@@ -80,7 +79,7 @@ class GiveawaysController < ApplicationController
     params.require(:giveaway).permit(:prize, :event_id, :num_winners).merge(user_id: current_user.id)
   end
 
-  def winner_params
-    params.require(:winners).permit(:spots, rerolls: [])
+  def rerolls_params
+    params.fetch(:winners, {}).permit(rerolls: [])
   end
 end

@@ -1,7 +1,9 @@
 class GiveawayRoller
-  def initialize(giveaway, spots, reroll_ids = [])
+  class InvalidReRollError < StandardError; end
+  class NegativeSpotsError < StandardError; end
+
+  def initialize(giveaway, reroll_ids = [])
     @giveaway = giveaway
-    @spots = spots
     @reroll_ids = reroll_ids
   end
 
@@ -15,30 +17,48 @@ class GiveawayRoller
 
   def destroy_rerolls
     if reroll_ids.present?
-      giveaway.winners.find(reroll_ids).each(&:destroy)
+      Winner.transaction do
+        reroll_ids.each do |id|
+          winner = giveaway.winners.find_by(id:)
+
+          if winner.nil?
+            raise InvalidReRollError, "Could not find giveaway winner with id #{id}"
+          end
+
+          winner.destroy
+        end
+      end
     end
   end
 
   def pick_winners
-    winners = attendees.sample(spots_to_pick)
+    winners = event.attendees.where.not(id: previous_winners).random.limit(spots_to_pick)
+
     winners.each do |winner|
       giveaway.winners.create!(
         attendee_id: winner.id,
-        email: winner.email,
-        event_id: giveaway.event_id,
-        name: winner.name,
+        event_id: event.id,
       )
     end
   end
 
   def spots_to_pick
-    # TODO: raise error if this is negative
-    spots - giveaway.winners.count
+    spots = giveaway.num_winners - giveaway.winners.count
+
+    if spots < 0
+      raise NegativeSpotsError, "Rolling would have a negative number of spots"
+    end
+
+    spots
   end
 
-  def attendees
-    @attendees ||= Eventbrite.new.attendees(giveaway.event_id)
+  def event
+    @event ||= giveaway.event
   end
 
-  attr_accessor :giveaway, :spots, :reroll_ids
+  def previous_winners
+    event.winners.select(:attendee_id).map(&:attendee_id)
+  end
+
+  attr_accessor :giveaway, :reroll_ids
 end

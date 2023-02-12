@@ -42,6 +42,9 @@ Style/GuardClause:
 Style/IfUnlessModifier:
   Enabled: false
 
+Style/NumericPredicate:
+  Enabled: false
+
 # We don't care about the fail/raise distinction
 Style/SignalException:
   EnforcedStyle: only_raise
