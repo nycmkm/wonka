@@ -1,0 +1,18 @@
+.table-responsive
+  %table.table
+    %thead
+      %tr
+        %th Name
+        %th Winners
+        %th Drawn
+        %th
+        %th
+
+    %tbody
+      - giveaways.each do |giveaway|
+        %tr
+          %td= link_to giveaway.prize, giveaway
+          %td= giveaway.num_winners
+          %td= yesno(giveaway.drawn?)
+          %td= link_to 'Edit', edit_giveaway_path(giveaway), class: "btn btn-secondary"
+          %td= button_to "Destroy", giveaway, method: :delete, form: { data: { turbo_confirm: 'Are you sure?' } }, class: "btn btn-danger"

@@ -1,0 +1,25 @@
+%h1= @event.name
+
+.row.mb-5
+  %h2 Giveaways (#{@event.giveaways.count})
+
+  - if @event.giveaways.exists?
+    = render "giveaways/table", giveaways: @event.giveaways
+
+.row.mb-5
+  %h2 Checked-in Attendees (#{@event.attendees.count})
+
+  - @event.attendees.order(:name).in_groups(4).each do |group|
+    .col
+      %ul
+        - group.compact.each do |attendee|
+          %li= attendee.name
+
+.row.mb-5
+  %h2 Winners (#{@event.winners.count})
+  
+  - @event.winners.in_groups(4).each do |group|
+    .col
+      %ul
+        - group.compact.each do |winner|
+          %li= winner.attendee.name

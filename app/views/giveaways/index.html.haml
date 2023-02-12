@@ -1,27 +1,7 @@
-%h1 Listing giveaways
+%h1 Giveaways
 
 - @giveaways.each do |event, giveaways|
   .row.mb-5.mt-5
     %h3 #{event}
 
-    .table-responsive
-      %table.table
-        %thead
-          %tr
-            %th Name
-            %th Winners
-            %th Drawn
-            %th
-            %th
-
-        %tbody
-          - giveaways.each do |giveaway|
-            %tr
-              %td= link_to giveaway.prize, giveaway
-              %td= giveaway.num_winners
-              %td= yesno(giveaway.drawn?)
-              %td= link_to 'Edit', edit_giveaway_path(giveaway)
-              %td= link_to 'Destroy', giveaway, method: :delete, data: { confirm: 'Are you sure?' }
-
-.row
-  = link_to 'New Giveaway', new_giveaway_path
+    = render "table", giveaways: giveaways
