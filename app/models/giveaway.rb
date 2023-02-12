@@ -1,7 +1,7 @@
 class Giveaway < ApplicationRecord
   belongs_to :user
   belongs_to :event
-  has_many :winners
+  has_many :winners, dependent: :destroy
 
   validates :prize, :num_winners, presence: true
 

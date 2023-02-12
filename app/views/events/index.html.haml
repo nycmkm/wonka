@@ -1,0 +1,17 @@
+%h1 Events
+
+.row.mb-5.mt-5
+  .table-responsive
+    %table.table
+      %thead
+        %tr
+          %th Name
+          %th Date
+          %th Attendees
+
+      %tbody
+        - @events.each do |event|
+          %tr
+            %td= link_to event.name, event
+            %td= event.date.strftime("%b %-d, %Y")
+            %td= event.attendees.count

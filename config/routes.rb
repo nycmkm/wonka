@@ -16,5 +16,5 @@ Rails.application.routes.draw do
 
   get "/health", to: "health#show"
 
-  root "giveaways#new"
+  root "events#index"
 end

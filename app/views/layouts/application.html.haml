@@ -23,9 +23,14 @@
             %a.nav-link{href: giveaways_path } Giveaways
           %li.nav-item
             %a.nav-link{href: new_giveaway_path } New Giveaway
-    .container-fluid.p-5
+    .container-fluid.p-5.main-page
       - if notice
         .alert.alert-info=notice
       - if alert
         .alert.alert-warning.alert
       = yield
+    %footer.bg-dark.text-center.text-white
+      .container.p-4
+        %p &copy; #{Time.now.year} NYC Mechanical Keyboard Meetup
+        %p
+          %a{ href: "https://github.com/nycmkm/wonka" } Code available on GitHub

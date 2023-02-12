@@ -30,14 +30,27 @@ services:
     volumes:
       - .:/app
       - node_modules:/app/node_modules
-  assets:
+  css:
     image: wonka-web
     depends_on:
       - web
-    command: yarn watch:all
+    command: yarn build:css --watch
     depends_on:
       - db
     env_file: .env
     volumes:
       - .:/app
       - node_modules:/app/node_modules
+    stdin_open: true
+  js:
+    image: wonka-web
+    depends_on:
+      - web
+    command: yarn build --watch
+    depends_on:
+      - db
+    env_file: .env
+    volumes:
+      - .:/app
+      - node_modules:/app/node_modules
+    stdin_open: true
