@@ -32,36 +32,25 @@ class GiveawaysController < ApplicationController
   def create
     @giveaway = Giveaway.new(giveaway_params)
 
-    respond_to do |format|
-      if @giveaway.save
-        format.html { redirect_to giveaway_url(@giveaway), notice: "Giveaway was successfully created." }
-        format.json { render :show, status: :created, location: @giveaway }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @giveaway.errors, status: :unprocessable_entity }
-      end
+    if @giveaway.save
+      redirect_to giveaway_url(@giveaway), notice: "Giveaway was successfully created."
+    else
+      render :new, status: :unprocessable_entity
     end
   end
 
   def update
-    respond_to do |format|
-      if @giveaway.update(giveaway_params)
-        format.html { redirect_to giveaway_url(@giveaway), notice: "Giveaway was successfully updated." }
-        format.json { render :show, status: :ok, location: @giveaway }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @giveaway.errors, status: :unprocessable_entity }
-      end
+    if @giveaway.update(giveaway_params)
+      redirect_to giveaway_url(@giveaway), notice: "Giveaway was successfully updated."
+    else
+      render :edit, status: :unprocessable_entity
     end
   end
 
   def destroy
     @giveaway.destroy
 
-    respond_to do |format|
-      format.html { redirect_to giveaways_url, notice: "Giveaway was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    redirect_to giveaways_url, notice: "Giveaway was successfully destroyed."
   end
 
   private
