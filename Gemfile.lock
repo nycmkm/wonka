@@ -193,14 +193,14 @@ GEM
       racc (~> 1.4)
     orm_adapter (0.5.0)
     parallel (1.22.1)
-    parser (3.2.0.0)
+    parser (3.2.1.0)
       ast (~> 2.4.1)
     pg (1.4.5)
     pry (0.14.2)
       coderay (~> 1.1)
       method_source (~> 1.0)
     public_suffix (5.0.1)
-    puma (5.6.5)
+    puma (6.0.2)
       nio4r (~> 2.0)
     racc (1.6.2)
     rack (2.2.6.2)
@@ -234,7 +234,7 @@ GEM
       zeitwerk (~> 2.5)
     rainbow (3.1.1)
     rake (13.0.6)
-    regexp_parser (2.6.2)
+    regexp_parser (2.7.0)
     reline (0.3.2)
       io-console (~> 0.5)
     responders (3.1.0)
@@ -258,7 +258,7 @@ GEM
       rspec-mocks (~> 3.11)
       rspec-support (~> 3.11)
     rspec-support (3.12.0)
-    rubocop (1.44.1)
+    rubocop (1.45.1)
       json (~> 2.3)
       parallel (~> 1.10)
       parser (>= 3.2.0.0)
@@ -350,7 +350,7 @@ GEM
     websocket-extensions (0.1.5)
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    zeitwerk (2.6.6)
+    zeitwerk (2.6.7)
 
 PLATFORMS
   aarch64-linux
@@ -358,10 +358,10 @@ PLATFORMS
 
 DEPENDENCIES
   bootsnap
-  bootstrap_form (~> 5.1)
+  bootstrap_form
   brakeman
   capybara
-  cssbundling-rails (~> 1.1)
+  cssbundling-rails
   debug
   devise
   factory_bot_rails
@@ -372,10 +372,10 @@ DEPENDENCIES
   http
   importmap-rails
   jbuilder
-  jsbundling-rails (~> 1.1)
-  pg (~> 1.1)
+  jsbundling-rails
+  pg
   pry
-  puma (~> 5.0)
+  puma
   rails (~> 7.0.4)
   rspec-rails
   rubocop
