@@ -41,3 +41,7 @@ jobs:
         env:
           EVENTBRITE_API_KEY: "fake"
           EVENTBRITE_ORGANIZATION_ID: "fake"
+      - name: Coveralls
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
