@@ -41,8 +41,7 @@ jobs:
         env:
           EVENTBRITE_API_KEY: "fake"
           EVENTBRITE_ORGANIZATION_ID: "fake"
-      - uses: joshmfrankel/simplecov-check-action@main
+      - name: Coveralls
+        uses: coverallsapp/github-action@master
         with:
-          minimum_suite_coverage: 60
-          minimum_file_coverage: 70
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
