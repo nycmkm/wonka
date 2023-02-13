@@ -7,7 +7,9 @@
     = render "giveaways/table", giveaways: @event.giveaways
 
 .row.mb-5
-  %h2 Checked-in Attendees (#{@event.attendees.count})
+  %h2
+    Checked-in Attendees (#{@event.attendees.count})
+    = link_to "Sync", sync_attendees_event_path(@event), class: "btn btn-secondary"
 
   - @event.attendees.order(:name).in_groups(4).each do |group|
     .col
