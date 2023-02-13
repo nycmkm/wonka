@@ -5,8 +5,7 @@ class EventsController < ApplicationController
     @events = Event.all.order(date: :desc)
   end
 
-  def show
-  end
+  def show; end
 
   def sync
     EventSynchronizer.new.sync
