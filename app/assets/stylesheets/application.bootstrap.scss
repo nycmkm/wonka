@@ -7,7 +7,7 @@ $dark: #0F0326;
 $red: #E65F5C;
 $brown: #99621E;
 
-$body-bg: $dark;
+$body-bg: $beige;
 $body-color: $dark;
 
 @import 'bootstrap/scss/bootstrap';
@@ -21,8 +21,7 @@ $body-color: $dark;
 }
 
 .main-page {
-  min-height: 75vh;
-  background: beige;
+  min-height: 80vh;
 }
 
 a {
