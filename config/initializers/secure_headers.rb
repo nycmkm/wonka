@@ -1,9 +1,9 @@
 SecureHeaders::Configuration.default do |config|
- config.csp = {
-    default_src: %w('self'),
-    font_src: %w('self' data:),
-    img_src: %w('self' data:),
-    script_src: %w('self'),
-    style_src: %w('self' 'unsafe-inline'),
+  config.csp = {
+    default_src: ["'self'"],
+    font_src: ["'self'", "data:"],
+    img_src: ["'self'", "data:"],
+    script_src: ["'self'"],
+    style_src: ["'self'", "'unsafe-inline'"],
   }
 end
