@@ -4,7 +4,7 @@
 
 .row.mb-5.mt-5
   .table-responsive
-    %table.table
+    %table.table.sortable
       %thead
         %tr
           %th Name
@@ -15,5 +15,5 @@
         - @events.each do |event|
           %tr
             %td= link_to event.name, event
-            %td= event.date.strftime("%b %-d, %Y")
+            %td{ "data-sort" => event.date.to_i }= event.date.strftime("%b %-d, %Y")
             %td= event.attendees.count

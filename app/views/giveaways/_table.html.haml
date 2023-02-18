@@ -1,12 +1,12 @@
 .table-responsive
-  %table.table
+  %table.table.sortable
     %thead
       %tr
         %th Name
         %th Winners
         %th Drawn
-        %th
-        %th
+        %th.no-sort
+        %th.no-sort
 
     %tbody
       - giveaways.each do |giveaway|
