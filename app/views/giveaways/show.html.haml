@@ -4,7 +4,7 @@
     = @giveaway.prize
   .mb-3
     %b Event:
-    = @giveaway.event.name
+    = link_to @giveaway.event.name, @giveaway.event
   .mb-3
     %b Winners:
     = @giveaway.num_winners
