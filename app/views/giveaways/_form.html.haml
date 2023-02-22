@@ -7,7 +7,7 @@
           %li= message
 
   .field
-    = f.select :event_id, options_for_select(@events.map { |e| [e.name, e.id] })
+    = f.select :event_id, options_for_select(@events.map { |e| [e.name, e.id] }, params[:event_id])
   .mb-3
     %small
       %a{ href: sync_events_path } Sync events
