@@ -3,13 +3,13 @@
   "private": "true",
   "dependencies": {
     "@hotwired/stimulus": "^3.2.1",
-    "@hotwired/turbo-rails": "^7.2.5",
+    "@hotwired/turbo-rails": "^7.3.0",
     "@popperjs/core": "^2.11.6",
     "bootstrap": "^5.2.3",
     "bootstrap-icons": "^1.10.3",
-    "esbuild": "^0.17.7",
-    "sass": "^1.58.0",
-    "sortable-tablesort": "^1.80.1"
+    "esbuild": "^0.17.10",
+    "sass": "^1.58.3",
+    "sortable-tablesort": "^2.0.0"
   },
   "scripts": {
     "build:css": "sass ./app/assets/stylesheets/application.bootstrap.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules",
