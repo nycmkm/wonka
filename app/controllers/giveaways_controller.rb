@@ -3,7 +3,7 @@ class GiveawaysController < ApplicationController
   before_action :set_events, only: %i[new create edit update]
 
   def index
-    @giveaways = Giveaway.all.group_by { |g| g.event.name }
+    @giveaways = Giveaway.order(:prize).group_by { |g| g.event.name }
   end
 
   def show
