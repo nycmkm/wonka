@@ -6,7 +6,7 @@
     = link_to "New", new_giveaway_path(event_id: @event.id), class: "btn btn-secondary"
 
   - if @event.giveaways.exists?
-    = render "giveaways/table", giveaways: @event.giveaways
+    = render "giveaways/table", giveaways: @event.giveaways.order(:prize)
 
 .row.mb-5
   %h2
