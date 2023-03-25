@@ -7,9 +7,9 @@
     "@popperjs/core": "^2.11.6",
     "bootstrap": "^5.2.3",
     "bootstrap-icons": "^1.10.3",
-    "esbuild": "^0.17.10",
-    "sass": "^1.58.3",
-    "sortable-tablesort": "^2.0.0"
+    "esbuild": "^0.17.12",
+    "sass": "^1.60.0",
+    "sortable-tablesort": "^2.0.1"
   },
   "scripts": {
     "build:css": "sass ./app/assets/stylesheets/application.bootstrap.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules",
