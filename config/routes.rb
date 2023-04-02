@@ -19,5 +19,8 @@ Rails.application.routes.draw do
 
   get "/health", to: "health#show"
 
+  get "/manifest.json" => "service_worker#manifest"
+  get "/service-worker.js" => "service_worker#service_worker"
+
   root "events#index"
 end
