@@ -3,3 +3,5 @@ import "@hotwired/turbo-rails"
 import * as bootstrap from "bootstrap"
 
 import "sortable-tablesort/sortable.js"
+
+import "./custom/companion"
