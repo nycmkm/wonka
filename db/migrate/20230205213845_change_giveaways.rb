@@ -1,3 +1,4 @@
+# rubocop:disable Rails/ThreeStateBooleanColumn
 class ChangeGiveaways < ActiveRecord::Migration[7.0]
   def change
     rename_column :giveaways, :name, :prize
@@ -6,3 +7,4 @@ class ChangeGiveaways < ActiveRecord::Migration[7.0]
     add_column :giveaways, :drawn, :boolean
   end
 end
+# rubocop:enable Rails/ThreeStateBooleanColumn
