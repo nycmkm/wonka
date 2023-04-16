@@ -26,8 +26,10 @@ RUN bundle install \
     --jobs "$(nproc)" \
     --binstubs="$BINSTUBS_DIR"
 
-COPY . .
-
+COPY package*json ./
+COPY yarn.* ./
 RUN yarn install
+
+COPY . .
 
 CMD rails server --binding 0.0.0.0
