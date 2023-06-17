@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: superfly/flyctl-actions/setup-flyctl@master
-      - run: flyctl deploy --build-arg GIT_VERSION=${GITHUB_SHA} --remote-only
+      - run: flyctl deploy -a ${{ secrets.FLY_APP_NAME }} --build-arg GIT_VERSION=${GITHUB_SHA} --remote-only
       - name: Notify Slack of Deploy
         id: slack
         uses: slackapi/slack-github-action@v1.23.0
