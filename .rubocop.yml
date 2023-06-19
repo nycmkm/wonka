@@ -6,6 +6,8 @@ require:
   - rubocop-performance
   - rubocop-rails
   - rubocop-rspec
+  - rubocop-capybara
+  - rubocop-factory_bot
 
 Layout/LineLength:
   Enabled: false
@@ -140,3 +142,6 @@ Rails/ReversibleMigration:
 
 Rails/BulkChangeTable:
   Enabled: false
+
+Rails/UniqueValidationWithoutIndex:
+  Enabled: false    

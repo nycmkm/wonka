@@ -5,7 +5,7 @@ Run giveaways from the set of attendees checked in for an Eventbrite event
 ## Local Setup
 
 1. Wonka runs locally using Docker and Docker Compose. Make sure Docker is installed and running.
-1. Create a `.env` file with the following keys:
+1. Create a `.env` file with the following keys. You can use [this documentation](https://www.eventbrite.com/platform/docs/organizations) to find your Eventbrite keys.
   ```
   EVENTBRITE_ORGANIZATION_ID=
   EVENTBRITE_API_KEY=
