@@ -6,7 +6,7 @@ FactoryBot.define do
   end
 
   factory :attendee do
-    event { create(:event) }
+    event
     eventbrite_id { rand(100_000) }
     name { "MyString" }
     email { "MyString" }
@@ -19,8 +19,8 @@ FactoryBot.define do
 
   factory :giveaway do
     prize { "Spaceship" }
-    event { create(:event) }
+    event
     num_winners { 3 }
-    user { create(:user) }
+    user
   end
 end
