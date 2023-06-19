@@ -35,6 +35,42 @@ a {
   }
 }
 
+.drop-in {
+  @for $i from 1 through 100 {
+    .form-check:nth-of-type(#{$i}) > label {
+      $dropin_delay: 0.8s;
+      $dropin_duration: 0.4s;
+      opacity: 0;
+      animation: drop $dropin_duration linear forwards;
+      animation-delay: $dropin_delay * $i;
+    }
+  }
+}
+
+// From https://techblog.geekyants.com/some-of-the-most-popular-css-text-animations
+@keyframes drop {
+    0% {
+        transform: translateY(-200px);
+        opacity: 0;
+    }
+    50% {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+    65% {
+        transform: translateY(-17px);
+        opacity: 1;
+    }
+    75% {
+        transform: translateY(-22px);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
+
 footer {
   font-size: 1rem;
 }

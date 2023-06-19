@@ -15,7 +15,7 @@ class GiveawaysController < ApplicationController
       @giveaway,
       rerolls_params[:rerolls]&.compact_blank,
     ).roll
-    redirect_to giveaway_url(@giveaway), notice: "Winners have been picked!"
+    redirect_to giveaway_url(@giveaway, animate: true), notice: "Winners have been picked!"
   end
 
   def new
