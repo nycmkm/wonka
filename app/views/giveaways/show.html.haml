@@ -8,7 +8,7 @@
   .mb-3
     %b Winners:
     = @giveaway.num_winners
-  .mb-3
+  .mb-3{ class: params[:animate] ? "drop-in" : "" }
     = bootstrap_form_for "winners", url: pick_winners_giveaway_path(@giveaway) do |form|
       - if @giveaway.winners.present?
         = form.collection_check_boxes "rerolls", @giveaway.winners, :id, :name, label: "Winners", help: "Check box to re-roll"
