@@ -35,8 +35,6 @@ services:
     depends_on:
       - web
     command: yarn build:css --watch
-    depends_on:
-      - db
     env_file: .env
     volumes:
       - .:/app
@@ -47,8 +45,6 @@ services:
     depends_on:
       - web
     command: yarn build --watch
-    depends_on:
-      - db
     env_file: .env
     volumes:
       - .:/app
