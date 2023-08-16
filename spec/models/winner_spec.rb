@@ -15,7 +15,7 @@ RSpec.describe Winner do
 
       expect(event.id).not_to eq(giveaway.event_id)
       expect(event.id).not_to eq(attendee.event_id)
-      expect(winner).to be_invalid
+      expect(winner).not_to be_valid
       expect(winner.errors).to include(:event_id)
     end
 
