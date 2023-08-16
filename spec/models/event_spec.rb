@@ -16,25 +16,25 @@ RSpec.describe Event do
       Event.create!(attributes)
 
       event = Event.new(attributes)
-      expect(event).to be_invalid
+      expect(event).not_to be_valid
       expect(event.errors[:eventbrite_id]).to include("has already been taken")
     end
 
     it "validates presence of name" do
       event = Event.new(valid_attributes.except(:name))
-      expect(event).to be_invalid
+      expect(event).not_to be_valid
       expect(event.errors).to include(:name)
     end
 
     it "validates presence of date" do
       event = Event.new(valid_attributes.except(:date))
-      expect(event).to be_invalid
+      expect(event).not_to be_valid
       expect(event.errors).to include(:date)
     end
 
     it "validates presence of eventbrite_id" do
       event = Event.new(valid_attributes.except(:eventbrite_id))
-      expect(event).to be_invalid
+      expect(event).not_to be_valid
       expect(event.errors).to include(:eventbrite_id)
     end
   end
