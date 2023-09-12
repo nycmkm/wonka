@@ -51,7 +51,7 @@ class GiveawaysController < ApplicationController
   private
 
   def set_events
-    @events = Event.all.order(date: :desc)
+    @events = Event.order(date: :desc)
   end
 
   def set_giveaway

@@ -2,7 +2,7 @@ class EventsController < ApplicationController
   before_action :set_event, only: %i[show sync_attendees]
 
   def index
-    @events = Event.all.order(date: :desc)
+    @events = Event.order(date: :desc)
   end
 
   def show; end

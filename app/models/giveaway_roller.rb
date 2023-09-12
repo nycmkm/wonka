@@ -57,7 +57,7 @@ class GiveawayRoller
   end
 
   def previous_winners
-    event.winners.select(:attendee_id).map(&:attendee_id)
+    event.winners.pluck(:attendee_id)
   end
 
   attr_accessor :giveaway, :reroll_ids
