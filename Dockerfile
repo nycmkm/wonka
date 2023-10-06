@@ -23,9 +23,9 @@ FROM quay.io/evl.ms/fullstaq-ruby:${RUBY_VERSION}-${VARIANT} as base
 
 LABEL fly_launch_runtime="rails"
 
-ARG NODE_VERSION=18.16.0
+ARG NODE_VERSION=20.7.0
 ARG YARN_VERSION=1.22.19
-ARG BUNDLER_VERSION=2.3.26
+ARG BUNDLER_VERSION=2.4.20
 
 ARG RAILS_ENV=production
 ENV RAILS_ENV=${RAILS_ENV}
@@ -55,7 +55,7 @@ RUN volta install node@${NODE_VERSION} yarn@${YARN_VERSION} && \
 
 FROM base as build_deps
 
-ARG BUILD_PACKAGES="git build-essential libpq-dev wget vim curl gzip xz-utils libsqlite3-dev"
+ARG BUILD_PACKAGES="git build-essential libpq-dev wget vim curl gzip xz-utils libsqlite3-dev libyaml-dev"
 ENV BUILD_PACKAGES ${BUILD_PACKAGES}
 
 RUN --mount=type=cache,id=dev-apt-cache,sharing=locked,target=/var/cache/apt \

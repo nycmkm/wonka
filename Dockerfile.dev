@@ -14,7 +14,7 @@ ENV PATH="$BINSTUBS_DIR:$PATH"
 RUN mkdir -p "$BINSTUBS_DIR"
 
 RUN gem update --system
-RUN gem install bundler --version 2.1.2
+RUN gem install bundler --version 2.4.20
 
 RUN mkdir /app
 WORKDIR /app
