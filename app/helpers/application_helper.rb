@@ -10,6 +10,6 @@ module ApplicationHelper
   # From https://www.writesoftwarewell.com/how-to-render-svg-icons-in-rails/
   def render_icon(icon, classes: nil)
     classes ||= ""
-    render "icons/#{icon}", classes: classes
+    render "icons/#{icon}", classes:
   end
 end
