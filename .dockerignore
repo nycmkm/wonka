@@ -1,4 +1,5 @@
 fly.toml
+.env*
 
 .git
 tmp

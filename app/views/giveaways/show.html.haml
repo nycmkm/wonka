@@ -1,21 +1,27 @@
 .row
-  .mb-3
-    %b Prize
-    = @giveaway.prize
-  .mb-3
-    %b Event:
-    = link_to @giveaway.event.name, @giveaway.event
-  .mb-3
-    %b Winners:
-    = @giveaway.num_winners
-  .mb-3{ class: params[:animate] ? "drop-in" : "" }
-    = bootstrap_form_for "winners", url: pick_winners_giveaway_path(@giveaway) do |form|
-      - if @giveaway.winners.present?
-        = form.collection_check_boxes "rerolls", @giveaway.winners, :id, :name, label: "Winners", help: "Check box to re-roll"
+  - if @giveaway.images.attached?
+    .col-6
+      - @giveaway.images.each do |image|
+        .mb-3
+          %img.img-fluid.rounded{ src: url_for(image) }
+  .col-6
+    .mb-3
+      %b Prize
+      = @giveaway.prize
+    .mb-3
+      %b Event:
+      = link_to @giveaway.event.name, @giveaway.event
+    .mb-3
+      %b Winners:
+      = @giveaway.num_winners
+    .mb-3{ class: params[:animate] ? "drop-in" : "" }
+      = bootstrap_form_for "winners", url: pick_winners_giveaway_path(@giveaway) do |form|
+        - if @giveaway.winners.present?
+          = form.collection_check_boxes "rerolls", @giveaway.winners, :id, :name, label: "Winners", help: "Check box to re-roll"
 
-      .d-grid.gap-2.d-md-block
-        %a.btn.btn-secondary{ role: "button", href: sync_attendees_event_path(@giveaway.event) } Sync Attendees (#{@giveaway.event.attendees.count})
-        = form.submit "Pick winners", class: "btn btn-success"
+        .d-grid.gap-2.d-md-block
+          %a.btn.btn-secondary{ role: "button", href: sync_attendees_event_path(@giveaway.event) } Sync Attendees (#{@giveaway.event.attendees.count})
+          = form.submit "Pick winners", class: "btn btn-success"
   
 .row
   = link_to 'Edit', edit_giveaway_path(@giveaway)

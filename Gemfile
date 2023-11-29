@@ -3,6 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "3.1.3"
 
+gem "aws-sdk-s3", require: false
 gem "bootsnap", require: false
 gem "bootstrap_form"
 gem "cssbundling-rails"
@@ -10,6 +11,7 @@ gem "devise"
 gem "fast_jsonparser"
 gem "haml-rails"
 gem "http"
+gem "image_processing"
 gem "importmap-rails"
 gem "jbuilder"
 gem "jsbundling-rails"

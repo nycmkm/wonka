@@ -15,5 +15,7 @@
     = f.text_field :prize
   .field
     = f.number_field :num_winners, label: "Winners"
+  .field
+    = f.file_field :images, multiple: true
   .actions.mb-3.mt-3
     = f.submit 'Save'
