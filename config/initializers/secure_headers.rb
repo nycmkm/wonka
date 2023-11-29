@@ -8,7 +8,7 @@ SecureHeaders::Configuration.default do |config|
   config.csp = {
     default_src: ["'self'"],
     font_src: ["'self'", "data:"],
-    img_src: img_src,
+    img_src:,
     script_src: ["'self'"],
     style_src: ["'self'", "'unsafe-inline'"],
   }
