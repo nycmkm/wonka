@@ -60,7 +60,7 @@ class GiveawaysController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def giveaway_params
-    params.require(:giveaway).permit(:prize, :event_id, :num_winners).merge(user_id: current_user.id)
+    params.require(:giveaway).permit(:prize, :event_id, :num_winners, images: []).merge(user_id: current_user.id)
   end
 
   def rerolls_params
