@@ -9,7 +9,7 @@ jobs:
     name: Deploy app
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: superfly/flyctl-actions/setup-flyctl@master
       - run: flyctl deploy -a ${{ secrets.FLY_APP_NAME }} --build-arg GIT_VERSION=${GITHUB_SHA} --remote-only
       - name: Notify Slack of Deploy
