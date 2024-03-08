@@ -17,7 +17,7 @@
     .col
       %ul
         - group.compact.each do |attendee|
-          %li= attendee.name
+          %li= attendee.display_name
 
 .row.mb-5
   %h2 Winners (#{@event.winners.count})
@@ -26,4 +26,4 @@
     .col
       %ul
         - group.compact.each do |winner|
-          %li= winner.attendee.name
+          %li= winner.attendee.display_name

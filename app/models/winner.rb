@@ -5,7 +5,7 @@ class Winner < ApplicationRecord
 
   validate :same_event_id_as_giveaway_and_event
 
-  delegate :name, :email, to: :attendee, allow_nil: true
+  delegate :display_name, :email, to: :attendee, allow_nil: true
 
   private
 
