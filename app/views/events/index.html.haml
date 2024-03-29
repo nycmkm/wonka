@@ -11,6 +11,7 @@
           %th Date
           %th Attendees
           %th Giveaways
+          %th Winners
 
       %tbody
         - @events.each do |event|
@@ -19,3 +20,4 @@
             %td{ "data-sort" => event.date.to_i }= event.date.strftime("%b %-d, %Y")
             %td= event.attendees.count
             %td= event.giveaways.count
+            %td= event.giveaways.sum(:num_winners)
