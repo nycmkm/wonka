@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "3.1.3"
+ruby "3.3.1"
 
 gem "aws-sdk-s3", require: false
 gem "bootsnap", require: false
