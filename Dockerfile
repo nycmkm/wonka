@@ -1,25 +1,6 @@
 # syntax = docker/dockerfile:experimental
 
-# Dockerfile used to build a deployable image for a Rails application.
-# Adjust as required.
-#
-# Common adjustments you may need to make over time:
-#  * Modify version numbers for Ruby, Bundler, and other products.
-#  * Add library packages needed at build time for your gems, node modules.
-#  * Add deployment packages needed by your application
-#  * Add (often fake) secrets needed to compile your assets
-
-#######################################################################
-
-# Learn more about the chosen Ruby stack, Fullstaq Ruby, here:
-#   https://github.com/evilmartians/fullstaq-ruby-docker.
-#
-# We recommend using the highest patch level for better security and
-# performance.
-
-ARG RUBY_VERSION=3.3.4
-ARG VARIANT=jemalloc-slim
-FROM quay.io/evl.ms/fullstaq-ruby:${RUBY_VERSION}-${VARIANT} as base
+FROM ruby:3.3.4 as base
 
 LABEL fly_launch_runtime="rails"
 
