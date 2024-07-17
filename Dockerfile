@@ -82,8 +82,7 @@ RUN --mount=type=cache,id=prod-apt-cache,sharing=locked,target=/var/cache/apt \
 
 # copy installed gems
 COPY --from=gems /app /app
-COPY --from=gems /usr/lib/fullstaq-ruby/versions /usr/lib/fullstaq-ruby/versions
-COPY --from=gems /usr/local/bundle /usr/local/bundle
+COPY --from=gems /usr/local /usr/local
 
 # copy installed node modules
 COPY --from=node_modules /app/node_modules /app/node_modules
