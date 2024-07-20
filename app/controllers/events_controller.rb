@@ -5,7 +5,10 @@ class EventsController < ApplicationController
     @events = Event.order(date: :desc)
   end
 
-  def show; end
+  def show
+    @open_giveaways = @event.giveaways.open
+    @drawn_giveaways = @event.giveaways.drawn
+  end
 
   def sync
     EventSynchronizer.new.sync

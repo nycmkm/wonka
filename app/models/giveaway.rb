@@ -6,6 +6,9 @@ class Giveaway < ApplicationRecord
 
   validates :prize, :num_winners, presence: true
 
+  scope :drawn, -> { includes(:winners).where.not(winners: { id: nil }) }
+  scope :open, -> { includes(:winners).where(winners: { id: nil }) }
+
   def drawn?
     winners.exists?
   end

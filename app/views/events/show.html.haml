@@ -5,8 +5,13 @@
     Giveaways (#{@event.giveaways.count})
     = link_to "New", new_giveaway_path(event_id: @event.id), class: "btn btn-secondary"
 
-  - if @event.giveaways.exists?
-    = render "giveaways/table", giveaways: @event.giveaways.order(:prize)
+  - if @open_giveaways.exists?
+    %h3 Open (#{@open_giveaways.count})
+    = render "giveaways/table", giveaways: @open_giveaways.order(:prize)
+
+  - if @drawn_giveaways.exists?
+    %h3 Drawn (#{@drawn_giveaways.count})
+    = render "giveaways/table", giveaways: @drawn_giveaways.order(:prize)
 
 .row.mb-5
   %h2
