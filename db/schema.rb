@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_03_08_003212) do
+ActiveRecord::Schema[7.1].define(version: 2024_10_02_023629) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -44,23 +44,23 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_08_003212) do
 
   create_table "attendees", force: :cascade do |t|
     t.bigint "event_id", null: false
-    t.bigint "eventbrite_id"
+    t.bigint "external_id"
     t.string "name"
     t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "discord_name"
-    t.index ["event_id", "eventbrite_id"], name: "index_attendees_on_event_id_and_eventbrite_id", unique: true
+    t.index ["event_id", "external_id"], name: "index_attendees_on_event_id_and_external_id", unique: true
     t.index ["event_id"], name: "index_attendees_on_event_id"
   end
 
   create_table "events", force: :cascade do |t|
-    t.bigint "eventbrite_id"
+    t.string "external_event_id"
     t.string "name"
     t.datetime "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["eventbrite_id"], name: "index_events_on_eventbrite_id", unique: true
+    t.index ["external_event_id"], name: "index_events_on_external_event_id", unique: true
   end
 
   create_table "giveaways", force: :cascade do |t|

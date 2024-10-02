@@ -6,18 +6,18 @@ RSpec.describe Event do
       {
         name: "Pluto Keyboard Meetup 2056",
         date: Time.parse("January 1, 2056 3:00pm"),
-        eventbrite_id: rand(100_000),
+        external_event_id: rand(100_000),
       }
     end
 
-    it "validates uniqueness of eventbrite_id" do
-      attributes = valid_attributes.merge(eventbrite_id: 2)
+    it "validates uniqueness of external_event_id" do
+      attributes = valid_attributes.merge(external_event_id: 2)
 
       Event.create!(attributes)
 
       event = Event.new(attributes)
       expect(event).not_to be_valid
-      expect(event.errors[:eventbrite_id]).to include("has already been taken")
+      expect(event.errors[:external_event_id]).to include("has already been taken")
     end
 
     it "validates presence of name" do
@@ -32,10 +32,10 @@ RSpec.describe Event do
       expect(event.errors).to include(:date)
     end
 
-    it "validates presence of eventbrite_id" do
-      event = Event.new(valid_attributes.except(:eventbrite_id))
+    it "validates presence of external_event_id" do
+      event = Event.new(valid_attributes.except(:external_event_id))
       expect(event).not_to be_valid
-      expect(event.errors).to include(:eventbrite_id)
+      expect(event.errors).to include(:external_event_id)
     end
   end
 end

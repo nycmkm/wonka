@@ -6,9 +6,7 @@ class GiveawaysController < ApplicationController
     @giveaways = Giveaway.order(:prize).group_by { |g| g.event.name }
   end
 
-  def show
-    # @attendees = Eventbrite.new.attendees(@giveaway.event_id)
-  end
+  def show; end
 
   def pick_winners
     GiveawayRoller.new(

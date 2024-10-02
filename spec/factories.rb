@@ -1,13 +1,13 @@
 FactoryBot.define do
   factory :event do
-    eventbrite_id { rand(100_000) }
+    external_event_id { rand(100_000) }
     name { "Mars Mechanical Keyboard Meetup v.001" }
     date { "2023-02-05 22:02:18" }
   end
 
   factory :attendee do
     event
-    eventbrite_id { rand(100_000) }
+    external_id { rand(100_000) }
     name { "MyString" }
     email { "MyString" }
   end

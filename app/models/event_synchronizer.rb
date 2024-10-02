@@ -1,17 +1,16 @@
 class EventSynchronizer
   def sync
-    eventbrite_events.each do |eb_event|
-      event = Event.find_or_initialize_by(eventbrite_id: eb_event[:id])
-
-      event.name = eb_event[:name][:text]
-      event.date = Time.zone.parse(eb_event[:start][:utc])
+    external_events.each do |ex_event|
+      event = Event.find_or_initialize_by(external_event_id: ex_event[:slug])
+      event.name = ex_event[:title]
+      event.date = Time.zone.parse("#{ex_event[:start_date]} #{ex_event[:start_time]}")
       event.save!
     end
   end
 
   private
 
-  def eventbrite_events
-    Eventbrite.new.events
+  def external_events
+    Tito.new.events
   end
 end
