@@ -22,6 +22,7 @@ class AttendeeSynchronizer
   end
 
   private
+
   DISCORD_NAME_QUESTION = "Discord name".freeze
 
   def external_attendees

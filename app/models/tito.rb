@@ -13,7 +13,7 @@ class Tito
     checkin_list_id = checkin_list(event_id)[:slug]
     checkin_list = CheckinList.new(checkin_list_id)
     checkins = checkin_list.checkins
-    tickets_ids = checkins.map { |c| c[:ticket_id] }
+    tickets_ids = checkins.pluck(:ticket_id)
 
     tickets(event_id).filter { |t| tickets_ids.include?(t[:id]) }
   end
@@ -44,7 +44,7 @@ class Tito
     response = HTTP.
                auth("Token token=#{ENV.fetch("TITO_API_KEY")}").
                headers(accept: "application/json").
-               get("#{BASE_URL}#{path}", params: params)
+               get("#{BASE_URL}#{path}", params:)
 
     if response.status != 200
       raise RequestError, "Error requesting #{path}: #{response.status}"
@@ -70,18 +70,18 @@ class Tito
 
     def checkins
       path = "/checkin_lists/#{list_id}/checkins"
-      all_pages(path, :checkin_lists)
+      fetch(path)
     end
 
     private
 
     attr_reader :list_id
 
-    def all_pages(path, key, page = 1)
+    def fetch(path)
       response = HTTP.
                  auth("Token token=#{ENV.fetch("TITO_API_KEY")}").
                  headers(accept: "application/json").
-                 get("#{BASE_URL}#{path}", params: { page: page })
+                 get("#{BASE_URL}#{path}", params: { page: })
 
       if response.status != 200
         raise RequestError, "Error requesting #{path}: #{response.status}"
