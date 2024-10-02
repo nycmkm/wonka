@@ -4,7 +4,7 @@ RSpec.describe Attendee do
   describe "validations" do
     it { is_expected.to belong_to(:event) }
 
-    it { is_expected.to validate_presence_of(:eventbrite_id) }
+    it { is_expected.to validate_presence_of(:external_id) }
 
     it { is_expected.to validate_presence_of(:name) }
 

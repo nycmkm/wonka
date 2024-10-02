@@ -7,7 +7,6 @@ class GiveawaysController < ApplicationController
   end
 
   def show
-    # @attendees = Eventbrite.new.attendees(@giveaway.event_id)
   end
 
   def pick_winners
