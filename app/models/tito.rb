@@ -81,7 +81,7 @@ class Tito
       response = HTTP.
                  auth("Token token=#{ENV.fetch("TITO_API_KEY")}").
                  headers(accept: "application/json").
-                 get("#{BASE_URL}#{path}", params: { page: })
+                 get("#{BASE_URL}#{path}")
 
       if response.status != 200
         raise RequestError, "Error requesting #{path}: #{response.status}"
