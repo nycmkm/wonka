@@ -17,6 +17,8 @@ class AttendeeSynchronizer
         attendee.discord_name = discord_answer && discord_answer[:response]
       end
 
+      next if attendee.email.blank? || attendee.name.blank?
+
       attendee.save!
     end
   end
