@@ -1,6 +1,6 @@
 # syntax = docker/dockerfile:experimental
 
-FROM ruby:3.3.4 as base
+FROM ruby:3.3.10 as base
 
 LABEL fly_launch_runtime="rails"
 
