@@ -23,7 +23,7 @@ services:
       dockerfile: Dockerfile.dev
     command: rails server --port=5000 --binding=0.0.0.0
     ports:
-      - "5000:5000"
+      - "5001:5000"
     depends_on:
       - db
     env_file: .env
