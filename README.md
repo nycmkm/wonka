@@ -10,7 +10,7 @@ Run giveaways from the set of attendees checked in for an Eventbrite event
   TITO_ACCOUNT_ID=
   TITO_API_KEY=
   ```
-1. `make dev` will run database setup/migrations, spin up the necessary containers, and the application will be available at http://localhost:5000
+1. `make dev` will run database setup/migrations, spin up the necessary containers, and the application will be available at http://localhost:5001
 1. In a rails console, make a user with `User.create!(email: <EMAIL>, password: <password>)`
 
 ## Storage for images

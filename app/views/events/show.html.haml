@@ -15,20 +15,38 @@
 
 .row.mb-5
   %h2
-    Checked-in Attendees (#{@event.attendees.count})
+    Checked-in Attendees
     = link_to "Sync", sync_attendees_event_path(@event), class: "btn btn-secondary"
 
-  - @event.attendees.order(:name).in_groups(4).each do |group|
-    .col
-      %ul
-        - group.compact.each do |attendee|
-          %li= attendee.display_name
+  %details.collapsible
+    %summary Toggle #{@event.attendees.count} attendees
+    .row
+      - @event.attendees.order(:name).in_groups(4).each do |group|
+        .col
+          %ul
+            - group.compact.each do |attendee|
+              %li= attendee.display_name
 
 .row.mb-5
-  %h2 Winners (#{@event.winners.count})
-  
-  - @event.winners.in_groups(4).each do |group|
-    .col
-      %ul
-        - group.compact.each do |winner|
-          %li= winner.attendee.display_name
+  %h2 Winners
+
+  %details.collapsible
+    %summary Toggle #{@event.winners.count} attendees
+    .row
+      - @event.winners.in_groups(4).each do |group|
+        .col
+          %ul
+            - group.compact.each do |winner|
+              %li= winner.attendee.display_name
+
+.row.mb-5
+  %h2 Attendees Without Wins
+
+  %details.collapsible
+    %summary Toggle #{@attendees_without_wins.count} attendees
+    .row
+      - @attendees_without_wins.in_groups(4).each do |group|
+        .col
+          %ul
+            - group.compact.each do |attendee|
+              %li= attendee.display_name

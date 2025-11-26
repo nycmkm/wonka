@@ -16,6 +16,12 @@ Layout/LineLength:
 Metrics/AbcSize:
   Enabled: false
 
+Metrics/CyclomaticComplexity:
+  Max: 10
+
+Metrics/PerceivedComplexity:
+  Max: 10
+
 # We don't (currently) document our code
 Style/Documentation:
   Enabled: false

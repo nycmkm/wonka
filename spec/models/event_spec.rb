@@ -38,4 +38,28 @@ RSpec.describe Event do
       expect(event.errors).to include(:external_event_id)
     end
   end
+
+  describe "#attendees_without_wins" do
+    let(:event) { create(:event) }
+    let!(:giveaway) { create(:giveaway, event:) }
+
+    it "returns attendees without wins ordered by name" do
+      winner_attendee = create(:attendee, event:, name: "Zed")
+      amy = create(:attendee, event:, name: "Amy")
+      ben = create(:attendee, event:, name: "Ben")
+
+      Winner.create!(event:, giveaway:, attendee: winner_attendee)
+
+      expect(event.attendees_without_wins).to eq([amy, ben])
+    end
+
+    it "returns all attendees when no winners exist" do
+      attendees = [
+        create(:attendee, event:, name: "Charlie"),
+        create(:attendee, event:, name: "Beatrice"),
+      ]
+
+      expect(event.attendees_without_wins).to eq(attendees.sort_by(&:name))
+    end
+  end
 end
