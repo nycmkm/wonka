@@ -8,6 +8,7 @@ class EventsController < ApplicationController
   def show
     @open_giveaways = @event.giveaways.open
     @drawn_giveaways = @event.giveaways.drawn
+    @attendees_without_wins = @event.attendees_without_wins
   end
 
   def sync
