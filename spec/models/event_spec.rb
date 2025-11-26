@@ -41,22 +41,22 @@ RSpec.describe Event do
 
   describe "#attendees_without_wins" do
     let(:event) { create(:event) }
-    let!(:giveaway) { create(:giveaway, event: event) }
+    let!(:giveaway) { create(:giveaway, event:) }
 
     it "returns attendees without wins ordered by name" do
-      winner_attendee = create(:attendee, event: event, name: "Zed")
-      amy = create(:attendee, event: event, name: "Amy")
-      ben = create(:attendee, event: event, name: "Ben")
+      winner_attendee = create(:attendee, event:, name: "Zed")
+      amy = create(:attendee, event:, name: "Amy")
+      ben = create(:attendee, event:, name: "Ben")
 
-      Winner.create!(event: event, giveaway: giveaway, attendee: winner_attendee)
+      Winner.create!(event:, giveaway:, attendee: winner_attendee)
 
       expect(event.attendees_without_wins).to eq([amy, ben])
     end
 
     it "returns all attendees when no winners exist" do
       attendees = [
-        create(:attendee, event: event, name: "Charlie"),
-        create(:attendee, event: event, name: "Beatrice"),
+        create(:attendee, event:, name: "Charlie"),
+        create(:attendee, event:, name: "Beatrice"),
       ]
 
       expect(event.attendees_without_wins).to eq(attendees.sort_by(&:name))

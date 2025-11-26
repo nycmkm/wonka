@@ -7,8 +7,8 @@ class Event < ApplicationRecord
   has_many :winners
 
   def attendees_without_wins
-    attendees
-      .where.not(id: winners.select(:attendee_id))
-      .order(:name)
+    attendees.
+      where.not(id: winners.select(:attendee_id)).
+      order(:name)
   end
 end
