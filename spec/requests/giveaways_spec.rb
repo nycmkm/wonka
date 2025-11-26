@@ -88,7 +88,7 @@ RSpec.describe "/giveaways" do
 
       it "renders a response with 422 status (i.e. to display the 'new' template)" do
         post giveaways_url, params: { giveaway: invalid_attributes }
-        expect(response).to have_http_status(:unprocessable_entity)
+        expect(response).to have_http_status(:unprocessable_content)
       end
     end
   end
@@ -122,7 +122,7 @@ RSpec.describe "/giveaways" do
       it "renders a response with 422 status (i.e. to display the 'edit' template)" do
         giveaway = Giveaway.create! valid_attributes
         patch giveaway_url(giveaway), params: { giveaway: invalid_attributes }
-        expect(response).to have_http_status(:unprocessable_entity)
+        expect(response).to have_http_status(:unprocessable_content)
       end
     end
   end

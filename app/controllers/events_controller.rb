@@ -14,12 +14,12 @@ class EventsController < ApplicationController
   def sync
     EventSynchronizer.new.sync
 
-    redirect_back fallback_location: root_path, notice: "Synchronized Events"
+    redirect_back_or_to(root_path, notice: "Synchronized Events")
   end
 
   def sync_attendees
     AttendeeSynchronizer.new(@event).sync
-    redirect_back fallback_location: root_path, notice: "Attendees synced"
+    redirect_back_or_to(root_path, notice: "Attendees synced")
   end
 
   private

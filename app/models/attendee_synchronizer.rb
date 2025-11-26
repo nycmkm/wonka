@@ -1,4 +1,6 @@
 class AttendeeSynchronizer
+  DISCORD_NAME_QUESTION = "Discord name".freeze
+
   def initialize(event)
     @event = event
   end
@@ -24,8 +26,6 @@ class AttendeeSynchronizer
   end
 
   private
-
-  DISCORD_NAME_QUESTION = "Discord name".freeze
 
   def external_attendees
     @external_attendees ||= Tito.new.attendees(event.external_event_id)
